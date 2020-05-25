@@ -25,16 +25,16 @@ lazy val root = Project(
 lazy val generalModuleSettings = Seq(
   organization := "com.github.fractal",
   version := "1.4",
-  scalaVersion := "2.12.4",
+  scalaVersion := "2.13.1",
   // Compiler settings. Use scalac -X for other options and their description.
   // See Here for more info http://www.scala-lang.org/files/archive/nightly/docs/manual/html/scalac.html
   scalacOptions ++= List("-feature","-deprecation", "-unchecked", "-Xlint"),
 
   // Uncommenting this line sometime helps troubleshooting if you are having issues with jars download (for example, if behind a proxy)
-  //ivyLoggingLevel := UpdateLogging.Full
+  // ivyLoggingLevel := UpdateLogging.Full
   Test / publishArtifact := false,
   publishTo := {
-    val basePublishingUrl = "http://internal-repo/" //your proxy reporsitory url
+    val basePublishingUrl = "https://internal-repo/" //your proxy reporsitory url
     val suffix = if(isSnapshot.value) "snapshots" else "releases"
     val internalRepoBaseName = "internal-repo"
     Some(s"$internalRepoBaseName-$suffix" at (basePublishingUrl + suffix))
